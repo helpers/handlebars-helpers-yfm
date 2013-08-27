@@ -1,0 +1,5 @@
+{
+  "name": "yfm",
+  "version": "0.1.0",
+  "main": ["./lib/yfm.js"]
+}
