@@ -15,8 +15,7 @@ The following options are available for downloading and adding the helpers to yo
 * `git clone https://github.com/assemble/yfm.git` into a directory in your project
 * [download this project]() and manually add it to your project
 
-
-Once the module has been doqnloaded, it must be enabled in Assemble's task or target options:
+Once the module has been downloaded, it must be enabled in Assemble's task or target options:
 
 ```js
 {
@@ -31,7 +30,7 @@ Once the module has been doqnloaded, it must be enabled in Assemble's task or ta
 }
 ```
 
-If everything is installed and configurated properly, you should now be able to use the helpers in your Assemble project.
+If everything is installed and configured properly, you should now be able to use the helpers in your Assemble project.
 
 Visit [assemble's documentation](http://assemble.io) to learn more about using helpers in your Assemble projects.
 
