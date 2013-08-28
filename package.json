@@ -26,10 +26,12 @@
   },
   "devDependencies": {
     "assemble": "~0.4.1",
-    "assemble-front-matter": "~0.4.1",
+    "grunt": "~0.4.1",
     "grunt-contrib-clean": "~0.4.1",
     "grunt-contrib-jshint": "~0.6.0",
-    "grunt": "~0.4.1"
+    "grunt-mocha-test": "~0.6.3",
+    "chai": "~1.7.2",
+    "time-grunt": "~0.1.1"
   },
   "keywords": [
     "yfm",
@@ -47,5 +49,8 @@
     "swig filter",
     "template filter",
     "underscore mixin"
-  ]
+  ],
+  "dependencies": {
+    "assemble-front-matter": "~0.1.0"
+  }
 }
