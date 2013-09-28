@@ -1,7 +1,7 @@
 /*
  * yfm
  * https://github.com/assemble/yfm
- * Copyright (c) 2013
+ * Copyright (c) 2013 Jon Schlinkert, contributors.
  * Licensed under the MIT license.
  */
 
@@ -27,7 +27,8 @@ module.exports = function(grunt) {
     assemble: {
       options: {
         flatten: true,
-        helpers: ['lib/yfm.js'],
+        layout: 'test/default.hbs',
+        helpers: ['lib/yfm.js', 'helper-prettify']
       },
       pages: {
         src: 'test/fixtures/*.hbs',
@@ -46,16 +47,9 @@ module.exports = function(grunt) {
     },
 
     // Before generating any new files,
-    // remove any previously-created files.
+    // remove files from previous build.
     clean: {
       example: ['docs/*.html']
-    },
-
-    watch: {
-      gruntfile: {
-        files: '<%= jshint.all %>',
-        tasks: ['jshint:lint']
-      }
     }
   });
 

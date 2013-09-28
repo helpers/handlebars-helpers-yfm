@@ -24,6 +24,11 @@
   "scripts": {
     "test": "grunt test"
   },
+  "dependencies": {
+    "assemble-yaml": "~0.1.3",
+    "globule": "~0.1.0",
+    "lodash": "~2.1.0"
+  },
   "devDependencies": {
     "assemble": "~0.4.1",
     "grunt": "~0.4.1",
@@ -31,7 +36,8 @@
     "grunt-contrib-jshint": "~0.6.0",
     "grunt-mocha-test": "~0.6.3",
     "chai": "~1.7.2",
-    "time-grunt": "~0.1.1"
+    "time-grunt": "~0.1.1",
+    "helper-prettify": "~0.1.3"
   },
   "keywords": [
     "yfm",
@@ -49,8 +55,5 @@
     "swig filter",
     "template filter",
     "underscore mixin"
-  ],
-  "dependencies": {
-    "assemble-front-matter": "~0.1.0"
-  }
+  ]
 }
