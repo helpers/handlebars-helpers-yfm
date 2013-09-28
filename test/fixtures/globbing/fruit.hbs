@@ -1,0 +1,13 @@
+---
+title: Fruit
+tags:
+- apple
+- banana
+- orange
+---
+<ul class="{{title}}">
+Content from the file.
+{{#tags}}
+  <li>{{.}}</li>
+{{/tags}}
+</ul>

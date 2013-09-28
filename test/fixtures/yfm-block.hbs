@@ -1,0 +1,12 @@
+{{#yfm 'test/fixtures/alpha.hbs'}}
+<h1>{{foo}}</h1>
+{{/yfm}}
+
+{{#eachYFM 'test/fixtures/templates/*.hbs'}}
+<ul class="{{title}}">
+{{#tags}}
+  <li>{{.}}</li>
+{{/tags}}
+</ul>
+{{/eachYFM}}
+
