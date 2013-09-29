@@ -7,7 +7,7 @@ This plugin requires Grunt `~0.4.1` and Assemble `~0.4.2`.
 
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins.
 
-## Intallation
+## Installation
 
 The following options are available for downloading and adding the helpers to your project:
 
@@ -18,14 +18,12 @@ The following options are available for downloading and adding the helpers to yo
 Once the module has been downloaded, it must be enabled in Assemble's task or target options:
 
 ```js
-{
-  assemble: {
-    options: {
-      helpers: ['vendor/yfm/*.js']
-    }
-    files: {
-      ...
-    }
+assemble: {
+  options: {
+    helpers: ['vendor/yfm/*.js']
+  }
+  files: {
+    ...
   }
 }
 ```

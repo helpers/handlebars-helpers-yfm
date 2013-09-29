@@ -1,6 +1,7 @@
 /*
  * yfm
  * https://github.com/assemble/yfm
+ *
  * Copyright (c) 2013 Jon Schlinkert, contributors.
  * Licensed under the MIT license.
  */
@@ -15,6 +16,7 @@ module.exports = function(grunt) {
 
   // Project configuration.
   grunt.initConfig({
+    book: require('./test/fixtures/book/book.yml'),
 
     // Lint JavaScript
     jshint: {
@@ -26,9 +28,15 @@ module.exports = function(grunt) {
 
     assemble: {
       options: {
+        aggregate: {
+          sep: '<!-- separator defined in Gruntfile -->',
+          compare_fn: function(a, b) {
+            return a.index >= b.index ? 1 : -1;
+          }
+        },
         flatten: true,
         layout: 'test/default.hbs',
-        helpers: ['lib/yfm.js', 'helper-prettify']
+        helpers: ['lib/*.js', 'helper-aggregate']
       },
       pages: {
         src: 'test/fixtures/*.hbs',
@@ -57,11 +65,12 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-mocha-test');
+  grunt.loadNpmTasks('grunt-sync-pkg');
   grunt.loadNpmTasks('assemble');
 
   // Tests to be run.
-  grunt.registerTask('test', ['mochaTest']);
+  grunt.registerTask('test', ['assemble', 'mochaTest']);
 
   // Default to tasks to run with the "grunt" command.
-  grunt.registerTask('default', ['clean', 'jshint', 'assemble', 'test']);
+  grunt.registerTask('default', ['clean', 'jshint', 'test', 'sync']);
 };

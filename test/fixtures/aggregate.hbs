@@ -1,12 +1,9 @@
 ---
 order: 21
-obj:
-  one: 5
+chapters: test/fixtures/book/*.hbs
 ---
+<!-- chapter -->
+{{{aggregate chapters sep="<!-- chapter -->"}}}
+
+<!-- ./test/fixtures/book/ -->
 {{{aggregate 'test/fixtures/globbing/*.hbs'}}}
-
-
-
-{{{aggregate 'test/fixtures/book/*.hbs' sep=intro}}}
-
-
