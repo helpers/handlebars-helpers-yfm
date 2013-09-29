@@ -41,6 +41,26 @@ module.exports = function(grunt) {
       pages: {
         src: 'test/fixtures/*.hbs',
         dest: 'test/actual/'
+      },
+      book: {
+        options: {
+          aggregate: {
+            compare_fn: function(a, b) {
+              if(a.context.chapter === b.context.chapter) {
+                return 0;
+              } else if (a.context.chapter > b.context.chapter) {
+                return 1;
+              } else {
+                return -1;
+              }
+            }
+          },
+          data: ['test/fixtures/book/book.yml'],
+          layout: 'test/fixtures/book/book.hbs'
+        },
+        files: [
+          { src: ['test/fixtures/book/*chapter-*.hbs', 'test/fixtures/book/toc.hbs'], dest: 'test/actual/book/' }
+        ]
       }
     },
 
