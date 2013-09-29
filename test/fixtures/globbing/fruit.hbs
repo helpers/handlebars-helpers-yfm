@@ -1,12 +1,13 @@
 ---
 title: Fruit
+order: 3
 tags:
-- apple
-- banana
-- orange
+  - apple
+  - banana
+  - orange
 ---
 <ul class="{{title}}">
-Content from the file.
+Content from {{title}}.
 {{#tags}}
   <li>{{.}}</li>
 {{/tags}}

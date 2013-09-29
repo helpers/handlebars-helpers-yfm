@@ -1,7 +1,8 @@
 /*global require:true */
-var frontMatter = require('assemble-front-matter'),
-    expect = require('chai').expect;
+var yfm = require('assemble-yaml');
+var expect = require('chai').expect;
 
+'use strict';
 
 describe('Reading From Files', function() {
 
@@ -17,30 +18,30 @@ describe('Reading From Files', function() {
       "version": 2
     },
     originalContent: "---\nfoo: bar\nversion: 2\n---\n\n<span class=\"alert alert-info\">This is an alert</span>\n",
-    content: "\n\n<span class=\"alert alert-info\">This is an alert</span>\n"
+    content: "<span class=\"alert alert-info\">This is an alert</span>\n"
   };
 
 
-  it("yaml file starts with --- no content", function(done) {
-    var data = frontMatter.extract('./test/fixtures/yaml/single.yml');
+  it("YAML file starts with --- no content", function(done) {
+    var data = yfm.extractJSON('./test/fixtures/yaml/single.yml');
+    expect(data).to.deep.equal(simpleExpected.context);
+    done();
+  });
+
+  it("YAML file starts and ends with --- no content", function(done) {
+    var data = yfm.extractJSON('./test/fixtures/yaml/double.yml');
+    expect(data).to.deep.equal(simpleExpected.context);
+    done();
+  });
+
+  it("YAML file starts and ends with --- has content", function(done) {
+    var data = yfm.extract('./test/fixtures/alpha.hbs');
     expect(data.context).to.deep.equal(simpleExpected.context);
     done();
   });
 
-  it("yaml file starts and ends with --- no content", function(done) {
-    var data = frontMatter.extract('./test/fixtures/yaml/double.yml');
-    expect(data.context).to.deep.equal(simpleExpected.context);
-    done();
-  });
-
-  it("yaml file starts and ends with --- has content", function(done) {
-    var data = frontMatter.extract('./test/fixtures/alpha.hbs');
-    expect(data.context).to.deep.equal(simpleExpected.context);
-    done();
-  });
-
-  it("hbs file with complex yaml data and content", function(done) {
-    var data = frontMatter.extract("./test/fixtures/beta.hbs");
+  it("hbs file with complex YAML data and content", function(done) {
+    var data = yfm.extract("./test/fixtures/beta.hbs");
     expect(data).to.deep.equal(complexExpected);
     done();
   });
@@ -69,30 +70,36 @@ describe('Reading From Strings', function() {
       "version": 2
     },
     originalContent: "---\nfoo: bar\nversion: 2\n---\n\n<span class=\"alert alert-info\">This is an alert</span>\n",
-    content: "\n\n<span class=\"alert alert-info\">This is an alert</span>\n"
+    content: "<span class=\"alert alert-info\">This is an alert</span>\n"
   };
 
-  it("yaml string starts with --- no content", function(done) {
-    var data = frontMatter.extract(simple1, opts);
+  it("YAML string starts with --- no content", function(done) {
+    var data = yfm.extract(simple1, opts);
     expect(data.context).to.deep.equal(simpleExpected.context);
     done();
   });
 
-  it("yaml string starts and ends with --- no content", function(done) {
-    var data = frontMatter.extract(simple2, opts);
+  it("YAML string starts and ends with --- no content", function(done) {
+    var data = yfm.extract(simple2, opts);
     expect(data.context).to.deep.equal(simpleExpected.context);
     done();
   });
 
-  it("yaml string starts and ends with --- has content", function(done) {
-    var data = frontMatter.extract(simple3, opts);
+  it("YAML string starts and ends with --- has content", function(done) {
+    var data = yfm.extract(simple3, opts);
     expect(data.context).to.deep.equal(simpleExpected.context);
     done();
   });
 
-  it("hbs string with complex yaml data and content", function(done) {
-    var data = frontMatter.extract(complex, opts);
+  it("hbs string with complex YAML data and content", function(done) {
+    var data = yfm.extract(complex, opts);
     expect(data).to.deep.equal(complexExpected);
+    done();
+  });
+
+  it("extracts file content, with YAML front matter stripped.", function(done) {
+    var data = yfm.stripYFM(complex, opts);
+    expect(data).to.deep.equal(complexExpected.content);
     done();
   });
 
